@@ -1,0 +1,6 @@
+name = "cf-geoip"
+type = "webpack"
+
+account_id = "58091867de4b9e482388dcd6725c4a5b"
+workers_dev = true
+compatibility_date = ""
