@@ -4,12 +4,24 @@ import { Router } from 'itty-router'
 const router = Router()
 
 router.get("/", async request => {
+
+  // Check for IP GET param in query
+  if (request.query.ip) {
+    let ip = request.query.ip
+    if (ip.match(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/)) {
+      return fetch(`https://bobbyiliev.com/ip.php?ip=${ip}`)
+    } else {
+      // Return a response with the IP and country
+      return new Response(`${ip} is not a valid IP`)
+    }
+  }
+
   // Get visitor IP
-  let ip = request.headers.get('cf-connecting-ip') || 'unknown'
+  let userIP = request.headers.get('cf-connecting-ip') || 'unknown'
   // Get visitor country
   const country = request.cf.country
   // Return a response with the IP and country
-  return new Response(`${ip} - ${country}`)
+  return new Response(`${userIP} - ${country}`)
 
 })
 

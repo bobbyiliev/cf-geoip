@@ -13,4 +13,5 @@ https://cf-geoip.bobbyiliev.workers.dev/
 ## Endpoints
 
 - `GET /` - Returns your IP address and the country code
-- `GET /{ip}` - Returns the country code of the IP address passed as an argument.
+- `GET /?ip=<ip>` - Returns the country code of the IP address passed as an argument
+- `GET /:ip` - Returns the country code of the IP address passed as an argument.
